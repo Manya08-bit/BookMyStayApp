@@ -1,25 +1,28 @@
-public static void main(String[] args) {
+public class BookMyStayApp {
 
-    System.out.println("===== Book My Stay - Room Availability =====");
+    public static void main(String[] args) {
 
-    Room single = new SingleRoom();
-    Room doubleRoom = new DoubleRoom();
-    Room suite = new SuiteRoom();
+        System.out.println("===== Book My Stay - Centralized Inventory =====");
 
-    int singleAvailable = 5;
-    int doubleAvailable = 3;
-    int suiteAvailable = 2;
+        Room single = new SingleRoom();
+        Room doubleRoom = new DoubleRoom();
+        Room suite = new SuiteRoom();
 
-    System.out.println("\n--- Room Details ---\n");
+        RoomInventory inventory = new RoomInventory();
 
-    single.displayRoomDetails();
-    System.out.println("Available Rooms: " + singleAvailable);
-    System.out.println();
+        System.out.println("\n--- Room Details ---\n");
 
-    doubleRoom.displayRoomDetails();
-    System.out.println("Available Rooms: " + doubleAvailable);
-    System.out.println();
+        single.displayRoomDetails();
+        System.out.println("Available: " + inventory.getAvailability(single.getRoomType()));
+        System.out.println();
 
-    suite.displayRoomDetails();
-    System.out.println("Available Rooms: " + suiteAvailable);
+        doubleRoom.displayRoomDetails();
+        System.out.println("Available: " + inventory.getAvailability(doubleRoom.getRoomType()));
+        System.out.println();
+
+        suite.displayRoomDetails();
+        System.out.println("Available: " + inventory.getAvailability(suite.getRoomType()));
+
+        inventory.displayInventory();
+    }
 }
